@@ -14,11 +14,14 @@ class Resize(QMainWindow, Ui_MainWindow):
         self.btnOpenImg.clicked.connect(self.open_file_img)
 
     def open_file_img(self):
-        img, _ = QFileDialog.getOpenFileName(
+        img_path, _ = QFileDialog.getOpenFileName(
             self.centralwidget,
             'Abrir Arquivo de Imagem',
             r'C:\Users\MF\Pictures'
         )
+        self.inputFileImg.setText(img_path)
+        self.original_img = QPixmap(img_path)
+        self.labelImg.setPixmap(self.original_img)
 
 
 if __name__ == '__main__':
