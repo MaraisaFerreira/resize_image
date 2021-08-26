@@ -12,6 +12,7 @@ class Resize(QMainWindow, Ui_MainWindow):
         super().setupUi(self)
 
         self.btnOpenImg.clicked.connect(self.open_file_img)
+        self.btnResize.clicked.connect(self.resize_img)
 
     def open_file_img(self):
         img_path, _ = QFileDialog.getOpenFileName(
@@ -22,6 +23,16 @@ class Resize(QMainWindow, Ui_MainWindow):
         self.inputFileImg.setText(img_path)
         self.original_img = QPixmap(img_path)
         self.labelImg.setPixmap(self.original_img)
+        self.inputWidth.setText(str(self.original_img.width()))
+        self.inputHeight.setText(str(self.original_img.height()))
+
+    def resize_img(self):
+        width = int(self.inputWidth.text())
+        self.new_img = self.original_img.scaledToWidth(width)
+        self.labelImg.setPixmap(self.new_img)
+        self.inputWidth.setText(str(self.new_img.width()))
+        self.inputHeight.setText(str(self.new_img.height()))
+
 
 
 if __name__ == '__main__':
