@@ -1,8 +1,6 @@
-# pyuic5 design.ui -o design.py -> p/ converter .ui em .py
-
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PyQt5.QtGui import QPixmap  # p/ abrir as imgs
+from PyQt5.QtGui import QPixmap
 from design import *
 
 
